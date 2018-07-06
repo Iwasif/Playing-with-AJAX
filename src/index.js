@@ -6,36 +6,29 @@ let btn = document.querySelector('#loadData')
 
 let p = document.querySelector('#output')
 
-let isShown = false
 
-p.style.visibility='visible'
-btn.innerHTML='show'
+fetch(URL)
+     .then(res => console.log(res.json()))
+     .catch(err => console.log(error))
+
+// fetch(URL)
+//   .then(function(response) {
+//     console.log(response.json());
+//   })
+
+//   .catch(function(error) {
+//     console.log(error);
+//   })
 
 
+// btn.addEventListener('click', () =>{
+//     const xhr = new  XMLHttpRequest()
 
-btn.addEventListener('click', () =>{
+//     xhr.onreadystatechange = () => {
+// p.innerHTML =xhr.response;
 
-if(isShown)
-{
-     p.style.visibility = 'hidden'
-     isShown = false
-    btn.innerHTML='show'
-    const xhr = new  XMLHttpRequest()
+//     }
 
-    xhr.onreadystatechange = () => {
-p.innerHTML =xhr.response;
-
-    }
-
-    xhr.open('GET', URL)
-    xhr.send()
-}
-
-else {
-    p.style.visibility = 'visible'
- isShown =true
-btn.innerHTML='hide'
-
-}
-
-})
+//     xhr.open('GET', URL)
+//     xhr.send()
+// })
