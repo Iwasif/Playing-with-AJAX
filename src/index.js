@@ -11,13 +11,13 @@ let p = document.querySelector('#output')
 //axios uses for data fetch show
 
 
-axios.get(URL)
-    .then(res => {
-      res.data.forEach(user => {
-          p.innerHTML = `${p.innerHTML} <br> Name: ${user.name} <br> Email: ${user.email}`
+// axios.get(URL)
+//     .then(res => {
+//       res.data.forEach(user => {
+//           p.innerHTML = `${p.innerHTML} <br> Name: ${user.name} <br> Email: ${user.email}`
 
-      });
-    })
+//       });
+//     })
 
 
 // fetch(URL)
