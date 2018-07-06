@@ -76,7 +76,7 @@ TR.appendChild(tdName)
 
 const tdEmail = document.createElement('td')
 
-tdEmail.innerHTML = contact.email
+tdEmail.innerHTML = contact.email ? contact.email:'N/A'
 TR.appendChild(tdEmail)
 
 const tdPhone = document.createElement('td')
@@ -105,6 +105,15 @@ deleteBtn.className = 'btn btn-danger mx-2'
 deleteBtn.innerHTML = 'Delete'
 deleteBtn.addEventListener('click', function() {
 
+    axios.delete(`${URL}/${contact.id}`)
+.then(res =>{
+    parentElement.removeChild(TR)
+
+})
+.catch(err => {
+    console.log(err)
+
+})
 
 })
 
