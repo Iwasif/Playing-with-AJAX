@@ -15,7 +15,50 @@ window.onload = function ()
 
      })
       .catch()
+
+      let addContact = document.querySelector('#addContact')
+      addContact.addEventListener('click', function() {
+      createNewContact()
+
+      })
+
 }
+
+//Create new contact
+
+function createNewContact() {
+
+ let name = document.querySelector('#nameField')
+ let email = document.querySelector('#emailField')
+ let  phone = document.querySelector('#phoneNumber')
+
+
+
+
+
+    let contact = {
+         name :name.value,
+         email : email.value,
+         phone : phone.value
+    }
+
+
+          axios.post(URL,contact)
+              .then(res =>{
+                let tbody = document.querySelector('#tbody')
+               createTDElement(res.data, tbody)
+
+                name.value = '',
+                email.value = '',
+                phone.value = ''
+
+              })
+               .catch(err => console.log(err))
+
+
+
+        }
+
 
 //Creating a TR and  TD element
 function createTDElement(contact, parentElement)
@@ -50,12 +93,22 @@ const editBtn= document.createElement('button')
 
 editBtn.className = 'btn btn-warning'
 editBtn.innerHTML ='Edit'
+
+editBtn.addEventListener('click', function() {
+
+} )
+
 tdAction.appendChild(editBtn)
 
 const deleteBtn = document.createElement('button')
-
 deleteBtn.className = 'btn btn-danger mx-2'
 deleteBtn.innerHTML = 'Delete'
+deleteBtn.addEventListener('click', function() {
+
+
+})
+
+
 tdAction.appendChild(deleteBtn)
 parentElement.appendChild(TR)
 
