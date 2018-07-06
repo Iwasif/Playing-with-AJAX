@@ -5,10 +5,13 @@ const URL = 'http://localhost:3000/contacts'
 let btn = document.querySelector('#loadData')
 
 let p = document.querySelector('#output')
-
+//2nd promise
 
 fetch(URL)
-     .then(res => console.log(res.json()))
+     .then(res =>res.json())
+     .then(data =>console.log(data))
+
+
      .catch(err => console.log(error))
 
 // fetch(URL)
