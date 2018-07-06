@@ -9,7 +9,19 @@ let p = document.querySelector('#output')
 
 fetch(URL)
      .then(res =>res.json())
-     .then(data =>console.log(data))
+     .then(data =>
+        {
+            data.forEach(user => {
+
+              p.innerHTML = `${p.innerHTML} <br> Name :${user.name}`
+
+
+            });
+
+
+
+        }
+    )
 
 
      .catch(err => console.log(error))
