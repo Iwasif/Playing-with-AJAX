@@ -3,60 +3,47 @@ import axios from 'axios'
 
 const URL = 'http://localhost:3000/contacts'
 
-let btn = document.querySelector('#loadData')
+//Creating a TR and  TD element
+function createTDElement(contact, parentElement)
+{
+const TR  = document.createElement('tr')
+const tdId = document.createElement('td')
 
-let p = document.querySelector('#output')
-//2nd promise
+tdId.innerHTML=contact.id
+TR.appendChild(tdId)
 
-//axios uses for data fetch show
+const tdName = document.createElement('td')
 
+tdName.innerHTML = contact.name
+TR.appendChild(tdName)
 
-// axios.get(URL)
-//     .then(res => {
-//       res.data.forEach(user => {
-//           p.innerHTML = `${p.innerHTML} <br> Name: ${user.name} <br> Email: ${user.email}`
+const tdEmail = document.createElement('td')
 
-//       });
-//     })
+tdEmail.innerHTML = contact.email
+TR.appendChild(tdEmail)
 
+const tdPhone = document.createElement('td')
 
-// fetch(URL)
-//      .then(res =>res.json())
-//      .then(data =>
-//         {
-//             data.forEach(user => {
+tdPhone.innerHTML= contact.number
+TR.appendChild(tdPhone)
 
-//               p.innerHTML = `${p.innerHTML} <br> Name :${user.name}`
+const tdAction = document.createElement('td')
 
-
-//             });
-
-
-
-//         }
-//     )
+TR.appendChild(tdAction)
 
 
-//      .catch(err => console.log(error))
+const editBtn= document.createElement('button')
 
-// fetch(URL)
-//   .then(function(response) {
-//     console.log(response.json());
-//   })
+editBtn.className = 'btn btn-warning'
+editBtn.innerHTML ='Edit'
+tdAction.appendChild(editBtn)
 
-//   .catch(function(error) {
-//     console.log(error);
-//   })
+const deleteBtn = document.createElement('button')
+
+deleteBtn.className = 'btn btn-danger'
+deleteBtn.innerHTML = 'Delete'
+tdAction.appendChild(deleteBtn)
+parentElement.appendChild(TR)
 
 
-// btn.addEventListener('click', () =>{
-//     const xhr = new  XMLHttpRequest()
-
-//     xhr.onreadystatechange = () => {
-// p.innerHTML =xhr.response;
-
-//     }
-
-//     xhr.open('GET', URL)
-//     xhr.send()
-// })
+}
