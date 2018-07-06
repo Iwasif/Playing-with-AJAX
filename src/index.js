@@ -2,12 +2,19 @@ import './index.css'
 
 const URL = 'http://localhost:3000/contacts'
 
-const xhr = new  XMLHttpRequest()
+let btn = document.querySelector('#loadData')
 
-xhr.onreadystatechange = () => {
-    console.log(xhr.response)
+let p = document.querySelector('#output')
 
-}
 
-xhr.open('GET', URL)
-xhr.send()
+btn.addEventListener('click', () =>{
+    const xhr = new  XMLHttpRequest()
+
+    xhr.onreadystatechange = () => {
+p.innerHTML =xhr.response;
+
+    }
+
+    xhr.open('GET', URL)
+    xhr.send()
+})
