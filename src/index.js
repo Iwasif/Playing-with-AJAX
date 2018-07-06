@@ -3,6 +3,20 @@ import axios from 'axios'
 
 const URL = 'http://localhost:3000/contacts'
 
+window.onload = function ()
+{
+    let tbody = document.querySelector('#tbody')
+
+    axios.get(URL)
+     .then(res => {
+         res.data.forEach(contact => {
+            createTDElement(contact, tbody)
+         });
+
+     })
+      .catch()
+}
+
 //Creating a TR and  TD element
 function createTDElement(contact, parentElement)
 {
@@ -24,7 +38,7 @@ TR.appendChild(tdEmail)
 
 const tdPhone = document.createElement('td')
 
-tdPhone.innerHTML= contact.number
+tdPhone.innerHTML= contact.phone ? contact.phone:'N/A'
 TR.appendChild(tdPhone)
 
 const tdAction = document.createElement('td')
@@ -40,7 +54,7 @@ tdAction.appendChild(editBtn)
 
 const deleteBtn = document.createElement('button')
 
-deleteBtn.className = 'btn btn-danger'
+deleteBtn.className = 'btn btn-danger mx-2'
 deleteBtn.innerHTML = 'Delete'
 tdAction.appendChild(deleteBtn)
 parentElement.appendChild(TR)
