@@ -95,6 +95,7 @@ editBtn.className = 'btn btn-warning'
 editBtn.innerHTML ='Edit'
 
 editBtn.addEventListener('click', function() {
+  $('#editModal').modal('toggle')
 
 } )
 
