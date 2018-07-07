@@ -1,5 +1,6 @@
 import './index.css'
 import axios from 'axios'
+import { ifError } from 'assert';
 
 const URL = 'http://localhost:3000/contacts'
 
@@ -95,9 +96,48 @@ editBtn.className = 'btn btn-warning'
 editBtn.innerHTML ='Edit'
 
 editBtn.addEventListener('click', function() {
-  $('#editModal').modal('toggle')
+  let mainModal = $('#editModal')
+  mainModal.modal('toggle')
 
-} )
+  let editName = document.querySelector('#editName')
+  let editEmail = document.querySelector('#editEmail')
+  let editNumber = document.querySelector('#editNumber')
+
+
+ editName.value = contact.name ? contact.name : 'N/A'
+ editEmail.value = contact.email ? contact.email : 'N/A'
+ editNumber.value = contact.phone ? contact.phone : 'N/A'
+
+ let editSave = document.querySelector('#editSave')
+
+ editSave.addEventListener('click',()=> {
+
+    axios.put(`${URL}/${contact.id}`,
+    {
+        name:editName.value,
+        email:editEmail.value,
+        phone:editNumber.value
+    })
+.then(res => {
+tdName.innerHTML=res.data.name
+tdEmail.innerHTML=res.data.email
+tdPhone.innerHTML=res.data.phone
+mainModal.modal('hide')
+
+
+})
+.catch(err => console.log(err))
+
+
+
+ })
+
+
+
+
+
+
+})
 
 tdAction.appendChild(editBtn)
 
